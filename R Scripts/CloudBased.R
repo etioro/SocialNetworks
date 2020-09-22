@@ -21,7 +21,7 @@ Grouped_Scores <- Grouped_Scores %>% dplyr::select(-cluster) # run only if clust
 Grouped_Scores <- Grouped_Scores %>% dplyr::mutate(cluster = flexmix::clusters(best_RemTime_mm))
 
 #remove previously assigned cluster and assign new cluster 
-training_data <- training_data %>% dplyr::select(-cluster) %>% dplyr::left_join(clusters, by = c("Case.ID"))
+training_data <- training_data %>% dplyr::select(-cluster) %>% dplyr::left_join(clusters, by = c("Case.ID"))%>% dplyr::filter(censured==1)
 testing_data <- testing_data %>% dplyr::select(-cluster) %>% dplyr::left_join(clusters,by = c("Case.ID")) %>% dplyr::filter(censured==1)
 
 # create training and test set at event rather than at trace level
