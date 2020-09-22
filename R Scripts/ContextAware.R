@@ -5,9 +5,9 @@
 
 
 # create training and test set at event rather than at trace level
-training <- soc %>% dplyr::left_join(training_data,by= c("Case.ID")) %>% dplyr::select(Case.ID,Grp_Deg,Grp_Bet,Grp_Eig,Grp_Clo,start_activity,end_activity,cluster,RemTime)%>% dplyr::filter(censured==1)
+training <- soc %>% dplyr::left_join(training_data,by= c("Case.ID")) %>% dplyr::select(Case.ID,Grp_Deg,Grp_Bet,Grp_Eig,Grp_Clo,start_activity,end_activity,cluster,RemTime)
 training <- training %>% filter(!is.na(Grp_Deg))
-testing <- soc %>% dplyr::left_join(testing_data,by= c("Case.ID")) %>% dplyr::select(Case.ID,Grp_Deg,Grp_Bet,Grp_Eig,Grp_Clo,start_activity,end_activity,cluster,RemTime)%>% dplyr::filter(censured==1)
+testing <- soc %>% dplyr::left_join(testing_data,by= c("Case.ID")) %>% dplyr::select(Case.ID,Grp_Deg,Grp_Bet,Grp_Eig,Grp_Clo,start_activity,end_activity,cluster,RemTime)
 testing <- testing %>% filter(!is.na(Grp_Deg))
 
 # determine value of mtry which minimises mae
